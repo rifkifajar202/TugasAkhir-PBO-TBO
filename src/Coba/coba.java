@@ -11,7 +11,6 @@
 
 package Coba;
 import java.sql.Connection;
-
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.sql.ResultSet;
@@ -25,6 +24,12 @@ import java.sql.PreparedStatement;
  */
 public class coba extends javax.swing.JFrame {
 
+    
+
+
+
+
+
     /** Creates new form coba */
     public coba() {
         initComponents();
@@ -34,7 +39,7 @@ public class coba extends javax.swing.JFrame {
 
 
     public boolean databaru;
-    private void GetData(){ // menampilkan data dari database
+   private void GetData(){ // menampilkan data dari database
     try {
         Connection con =koneksi.getConnection();
         Statement stm = con.createStatement();
@@ -43,7 +48,10 @@ public class coba extends javax.swing.JFrame {
     }
     catch (Exception e) {
     }
+
 }
+ 
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -56,26 +64,22 @@ public class coba extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        txtalamat = new javax.swing.JTextField();
-        btndelete = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         txtid = new javax.swing.JTextField();
-        txtsave = new javax.swing.JButton();
         txtnama = new javax.swing.JTextField();
-        txtnik = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        txtjabatan = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        RBLK = new javax.swing.JRadioButton();
+        RBPR = new javax.swing.JRadioButton();
         txttlp = new javax.swing.JTextField();
-        txtnew = new javax.swing.JButton();
-        btnexit = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        txtalamat = new javax.swing.JTextField();
+        cbjabatan = new javax.swing.JComboBox();
+        CBgol = new javax.swing.JComboBox();
+        txtgaji = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        txtsave = new javax.swing.JButton();
+        btndelete = new javax.swing.JButton();
+        btnexit = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,70 +95,85 @@ public class coba extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(120, 120, 120));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
+        getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.setName(""); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Alamat");
-
-        btndelete.setText("Delete");
-        btndelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndeleteActionPerformed(evt);
-            }
-        });
-
+        txtid.setBorder(null);
+        txtid.setOpaque(false);
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtidActionPerformed(evt);
             }
         });
+        getContentPane().add(txtid);
+        txtid.setBounds(540, 134, 250, 20);
 
-        txtsave.setText("Save");
-        txtsave.addActionListener(new java.awt.event.ActionListener() {
+        txtnama.setBorder(null);
+        txtnama.setOpaque(false);
+        getContentPane().add(txtnama);
+        txtnama.setBounds(540, 174, 250, 20);
+
+        buttonGroup1.add(RBLK);
+        RBLK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        RBLK.setText("Laki-laki");
+        RBLK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsaveActionPerformed(evt);
+                RBLKActionPerformed(evt);
             }
         });
+        getContentPane().add(RBLK);
+        RBLK.setBounds(540, 210, 120, 25);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Id");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Jabatan");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("NIK");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("No Tlp");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Nama");
-
-        txtnew.setText("New");
-        txtnew.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(RBPR);
+        RBPR.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        RBPR.setText("Perempuan");
+        RBPR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnewActionPerformed(evt);
+                RBPRActionPerformed(evt);
             }
         });
+        getContentPane().add(RBPR);
+        RBPR.setBounds(660, 210, 130, 25);
 
-        btnexit.setText("Exit");
-        btnexit.addActionListener(new java.awt.event.ActionListener() {
+        txttlp.setBorder(null);
+        txttlp.setOpaque(false);
+        getContentPane().add(txttlp);
+        txttlp.setBounds(540, 250, 250, 20);
+
+        txtalamat.setBorder(null);
+        txtalamat.setOpaque(false);
+        getContentPane().add(txtalamat);
+        txtalamat.setBounds(540, 290, 250, 20);
+
+        cbjabatan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbjabatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Staf", "Kabag" }));
+        cbjabatan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnexitActionPerformed(evt);
+                cbjabatanActionPerformed(evt);
             }
         });
+        getContentPane().add(cbjabatan);
+        cbjabatan.setBounds(540, 330, 130, 20);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("PENDAFTARAN PEGAWAI");
+        CBgol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CBgol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "G/1", "G/2", "G/3" }));
+        CBgol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBgolActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CBgol);
+        CBgol.setBounds(540, 360, 130, 20);
+
+        txtgaji.setBorder(null);
+        txtgaji.setOpaque(false);
+        getContentPane().add(txtgaji);
+        txtgaji.setBounds(540, 400, 250, 20);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,136 +186,107 @@ public class coba extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.setOpaque(false);
+        jTable2.setRequestFocusEnabled(false);
         jScrollPane2.setViewportView(jTable2);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(txtnew)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(txtsave)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btndelete)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnexit))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtid, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                                    .addComponent(txtnama)
-                                    .addComponent(txtnik)
-                                    .addComponent(txtjabatan)
-                                    .addComponent(txttlp)
-                                    .addComponent(txtalamat)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel7)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtjabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txttlp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtalamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtsave)
-                    .addComponent(btndelete)
-                    .addComponent(btnexit)
-                    .addComponent(txtnew))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(130, 580, 940, 150);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Coba/form-1.png"))); // NOI18N
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(0, 0, 1160, 810);
 
-        jPanel1.getAccessibleContext().setAccessibleName("Employee Registration");
+        txtsave.setText("Save");
+        txtsave.setBorder(null);
+        txtsave.setOpaque(false);
+        txtsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtsave);
+        txtsave.setBounds(540, 450, 100, 40);
+
+        btndelete.setText("Delete");
+        btndelete.setBorder(null);
+        btndelete.setOpaque(false);
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btndelete);
+        btndelete.setBounds(690, 450, 100, 40);
+
+        btnexit.setText("Exit");
+        btnexit.setBorder(null);
+        btnexit.setOpaque(false);
+        btnexit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnexitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnexit);
+        btnexit.setBounds(1030, 80, 50, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewActionPerformed
-        // TODO add your handling code here:
-       //Connection con = new koneksi().getConnection();
-        databaru=true;
-    // mengosongkan textbox
-    txtid.setText("");
-    txtnama.setText("");
-    txtnik.setText("");
-    txtjabatan.setText("");
-    txttlp.setText("");
-    txtalamat.setText("");
-
-    }//GEN-LAST:event_txtnewActionPerformed
-
-private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
     // TODO add your handling code here:
-}//GEN-LAST:event_txtidActionPerformed
+}//GEN-LAST:event_formMouseClicked
+
+private void cbjabatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbjabatanActionPerformed
+    
+}//GEN-LAST:event_cbjabatanActionPerformed
+
+private void RBPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBPRActionPerformed
+    
+}//GEN-LAST:event_RBPRActionPerformed
+
+private void RBLKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBLKActionPerformed
+    
+    
+}//GEN-LAST:event_RBLKActionPerformed
+
+private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
+    // TODO add your handling code here:
+    JOptionPane.showMessageDialog(null, "Anda Keluar ?");
+                Login log = new Login();
+                log.setVisible(true);
+                setVisible(false);
+}//GEN-LAST:event_btnexitActionPerformed
 
 private void txtsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsaveActionPerformed
-        
-    // TODO add your handling code here:
+ String jabatan = (String) cbjabatan.getSelectedItem();
+ String golongan = (String) CBgol.getSelectedItem();
+ String Jenis_Kelamin = null;
+ String gaji = txtgaji.getText();
+                if(RBLK.isSelected()){
+                    Jenis_Kelamin="Laki-laki";
+                }else if(RBPR.isSelected()){
+                    Jenis_Kelamin="Perempuan";
+                }
+  if(CBgol.getSelectedItem().equals("G/1")){
+                 golongan="G/1";
+                 gaji="6800000";
+                 }else if(CBgol.getSelectedItem().equals("G/2")) {
+                 golongan="G/2";
+                 gaji="7200000";
+                 }else{
+                 golongan="G/3";
+                 gaji="8000000";
+                  }
     if (databaru == true) { // prosess simpan atau edit
         try {
-            String sql = "insert into employee values('"+txtid.getText()+"','"+txtnama.getText()+"','"+txtnik.getText()+"','"+txtjabatan.getText()+"','"+txttlp.getText()+"','"+txtalamat.getText()+"')";
+                String sql = "INSERT INTO employee (id_karyawan,nama_karyawan, Jenis_Kelamin, no_telphone,alamat,jabatan,golongan,gaji) VALUES('"+txtid.getText()+"','"+txtnama.getText()+"','"+Jenis_Kelamin+"','"+txttlp.getText()+"','"+txtalamat.getText()+"','"+jabatan+"','"+golongan+"','"+gaji+"')";
+                if(cbjabatan.getSelectedItem().equals("Staf")){
+                  jabatan="Staf";
+                }else if(cbjabatan.getSelectedItem().equals("Kabag")){
+              jabatan="Kabag";
+
+                 }
             Connection con = koneksi.getConnection();
             PreparedStatement pst = con.prepareStatement(sql);
             pst.execute();
@@ -304,19 +294,13 @@ private void txtsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }}
-        else {
-        try {
-            String sql = "update karyawan SET nama_karyawan='"+txtnama.getText()+"',nik='"+txtnik.getText()+"',jabatan='"+txtjabatan.getText()+"',no_telphone='"+txttlp.getText()+"',alamat='"+txtalamat.getText()+"' where id_karyawan='"+txtid.getText()+"'";
-            Connection con = koneksi.getConnection();
-            java.sql.PreparedStatement pst = con.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "berhasil disimpan");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
     GetData();
+
 }//GEN-LAST:event_txtsaveActionPerformed
+
+private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+    // TODO add your handling code here:
+}//GEN-LAST:event_txtidActionPerformed
 
 private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
     // TODO add your handling code here:
@@ -325,28 +309,32 @@ private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         Connection con = koneksi.getConnection();
         PreparedStatement pst = con.prepareStatement(sql);
         pst.execute();
-        JOptionPane.showMessageDialog(null, "Data akan dihapus?");
+        JOptionPane.showMessageDialog(null, "Data Terhapus");
         databaru=true;
         txtid.setText("");
         txtnama.setText("");
-        txtnik.setText("");
-        txtjabatan.setText("");
         txttlp.setText("");
         txtalamat.setText("");
+        txtgaji.setText("");
+       
     } catch (Exception e) {}
 
     GetData();
-    
 }//GEN-LAST:event_btndeleteActionPerformed
 
-private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-    // TODO add your handling code here:
-}//GEN-LAST:event_formMouseClicked
-
-private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
-    // TODO add your handling code here:
-    System.exit(0);
-}//GEN-LAST:event_btnexitActionPerformed
+private void CBgolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBgolActionPerformed
+    String golongan;
+    if(CBgol.getSelectedItem().equals("G/1")){
+                 golongan="G/1";
+                 txtgaji.setText("6800000");
+                 }else if(CBgol.getSelectedItem().equals("G/2")) {
+                 golongan="G/2";
+                 txtgaji.setText("7200000");
+                 }else{
+                 golongan="G/3";
+                 txtgaji.setText("8000000");
+                  }
+}//GEN-LAST:event_CBgolActionPerformed
 
     /**
     * @param args the command line arguments
@@ -360,28 +348,25 @@ private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox CBgol;
+    private javax.swing.JRadioButton RBLK;
+    private javax.swing.JRadioButton RBPR;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnexit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox cbjabatan;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField txtalamat;
+    private javax.swing.JTextField txtgaji;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtjabatan;
     private javax.swing.JTextField txtnama;
-    private javax.swing.JButton txtnew;
-    private javax.swing.JTextField txtnik;
     private javax.swing.JButton txtsave;
     private javax.swing.JTextField txttlp;
     // End of variables declaration//GEN-END:variables
 
+   
 }
